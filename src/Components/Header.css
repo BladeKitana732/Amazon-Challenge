@@ -1,0 +1,69 @@
+.header {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: navy;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo{
+    width: 100px;
+    object-fit: contain;
+    margin: 0 20px;
+    margin-top: 18px;
+}
+
+.search_icon{
+    padding: 5px;
+    height: 22px;
+    background-color: orange;
+}
+
+.search {
+    border: solid 2px black;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    border-radius: 24px;
+}
+
+.input_box {
+    height: 12px;
+    padding: 10px;
+    width: 100%;
+}
+
+.choice {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: white;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.top {
+    font-size: 10px;
+}
+
+.bottom {
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.cart {
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.item_count {
+    margin-left: 10px;
+    margin-right: 10px;
+}
