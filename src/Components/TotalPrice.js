@@ -3,8 +3,11 @@ import './TotalPrice.css';
 import CurrencyFormat from 'react-currency-format';
 import { useStateValue } from '../StateProvider';
 import { cartTotal } from '../reducer';
+import { useHistory } from 'react-router-dom';
 
 function TotalPrice() {
+    // gives us browser history
+    const history = useHistory();
     // to pull data from cart
     const [{ cart }, release] = useStateValue();
 
@@ -28,8 +31,8 @@ function TotalPrice() {
             thousandSeparator={true}
             prefix={"$"}
            /> 
-
-           <button>Proceed to Checkout</button>
+            {/* the onClick event is going to  */}
+           <button onClick={e => history.push('/payment')}>Proceed to Checkout</button>
         </div>
     )
 }

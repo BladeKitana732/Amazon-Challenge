@@ -8,6 +8,7 @@ import Login from './Components/Login';
 import { useEffect } from 'react';
 import { useStateValue } from './StateProvider';
 import { auth } from './firebase';
+import Payment from './Components/Payment'
 
 
 
@@ -52,6 +53,10 @@ function App() {
           <Route path="/checkout">
             <Header /> 
             <Checkout />
+          </Route> 
+          <Route path="/payment">
+            <Header />
+            <Payment />
           </Route> 
           {/* default route always at the bottom or it will not work/render */}
           <Route path="/">
