@@ -35,7 +35,7 @@ function Header() {
               <Link to={ !user && '/login'}>
                 <div onClick={handleUser} className="choice">
                     <span className="top">
-                        Hello Guest
+                        Hello {!user ? 'Guest' : user.email}
                     </span>
 
                     <span className="bottom">
