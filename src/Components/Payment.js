@@ -12,6 +12,20 @@ function Payment() {
     const stripe = useStripe();
     const elements = useElements();
 
+    const [error, setError] = useState(null);
+    const [disabled, setDisabled] = useState(true);
+
+    const handleSubmit = e => {
+        // stripe magic
+
+    }
+
+    // this event will listen for changes & tell user any error regarding input of info
+    const handleChange = event => {
+        setDisabled(event.empty);
+        setError(event.error ? event.error.message : "");
+    }
+
     return (
         <div className="payment-background">
             <div className="payment-container">
@@ -56,8 +70,8 @@ function Payment() {
                     </div>
                     <div className="card-details">
                         {/* Stripe magic will go here */}
-                        <form>
-                            <CardElement /> 
+                        <form onSubmit={handleSubmit}>
+                            <CardElement onChange={handleChange}/> 
                         </form>
                     </div>
                 </div>
