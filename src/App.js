@@ -12,7 +12,7 @@ import Payment from './Components/Payment';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 
-const promise = loadStripe('publishable key goes here from stripe login account');
+const promise = loadStripe('pk_test_51HotpaHEbQqtd8h8JitVgCrRyaR9U3xOA0JR4Vs5QpClubxoWoUmzIkoubgkhKolJuE2Q8zvvoL1TbKgB1ksyqQ800C1cdK7kl');
 
 
 function App() {
@@ -59,7 +59,10 @@ function App() {
           </Route> 
           <Route path="/payment">
             <Header />
+            <Elements stripe={promise}>
             <Payment />
+            </Elements>
+            
           </Route> 
           {/* default route always at the bottom or it will not work/render */}
           <Route path="/">

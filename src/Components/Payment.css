@@ -25,6 +25,6 @@
     flex: 20%;
 }
 
-.address, .chosen-items {
+.address, .chosen-items, .card-details {
     flex: 80%;
 }

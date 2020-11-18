@@ -3,10 +3,14 @@ import './Payment.css';
 import { useStateValue } from "../StateProvider";
 import ChosenItem from './ChosenItem';
 import { Link } from 'react-router-dom';
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 
 
 function Payment() {
     const [{ user, cart }, release] = useStateValue();
+
+    const stripe = useStripe();
+    const elements = useElements();
 
     return (
         <div className="payment-background">
@@ -52,6 +56,9 @@ function Payment() {
                     </div>
                     <div className="card-details">
                         {/* Stripe magic will go here */}
+                        <form>
+                            <CardElement /> 
+                        </form>
                     </div>
                 </div>
             </div>
