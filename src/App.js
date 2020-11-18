@@ -8,8 +8,11 @@ import Login from './Components/Login';
 import { useEffect } from 'react';
 import { useStateValue } from './StateProvider';
 import { auth } from './firebase';
-import Payment from './Components/Payment'
+import Payment from './Components/Payment';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
 
+const promise = loadStripe('publishable key goes here from stripe login account');
 
 
 function App() {

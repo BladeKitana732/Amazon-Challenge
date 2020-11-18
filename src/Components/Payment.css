@@ -6,7 +6,7 @@
     text-align: center;
     padding: 10px;
     font-weight: 400;
-    background-color: white;
+    background-color: whitesmoke;
     border-bottom: 1px solid blue;
 }
 
@@ -17,4 +17,14 @@
 .payment-area {
     display: flex;
     padding: 20px;
+    margin: 0 20px;
+    border-bottom: 1px solid gray;
+}
+
+.title {
+    flex: 20%;
+}
+
+.address, .chosen-items {
+    flex: 80%;
 }
