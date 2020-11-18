@@ -2,6 +2,7 @@ import React from 'react';
 import './Payment.css';
 import { useStateValue } from "../StateProvider";
 import ChosenItem from './ChosenItem';
+import { Link } from 'react-router-dom';
 
 
 function Payment() {
@@ -10,12 +11,16 @@ function Payment() {
     return (
         <div className="payment-background">
             <div className="payment-container">
-                <div className="payment-area">
+                <h1>
+                    {/* this addition allows user to click on number of items as a link to return them to the checkout page prior */}
+                    Checkout (<Link to="/checkout">{cart?.length} items</Link>)
+                </h1>
+                <div className="payment-area"> 
                     <div className="title">
                         <h3>Delivery Address</h3>
                             <div className="address">
                                 <p>{user?.email}</p>
-                                <p>5821 Chatham Lane</p>
+                                <p>Street address</p>
                                 <p>The Colony, Texas</p>
                             </div>
                     </div>
