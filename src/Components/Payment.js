@@ -4,27 +4,12 @@ import { useStateValue } from "../StateProvider";
 import ChosenItem from './ChosenItem';
 import { Link } from 'react-router-dom';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import CurrencyFormat from 'react-currency-format';
+import cartTotal from '../reducer';
 
 
 function Payment() {
-    const [{ user, cart }, release] = useStateValue();
-
-    const stripe = useStripe();
-    const elements = useElements();
-
-    const [error, setError] = useState(null);
-    const [disabled, setDisabled] = useState(true);
-
-    const handleSubmit = e => {
-        // stripe magic
-
-    }
-
-    // this event will listen for changes & tell user any error regarding input of info
-    const handleChange = event => {
-        setDisabled(event.empty);
-        setError(event.error ? event.error.message : "");
-    }
+    const [{ user, cart }] = useStateValue();
 
     return (
         <div className="payment-background">
@@ -70,8 +55,17 @@ function Payment() {
                     </div>
                     <div className="card-details">
                         {/* Stripe magic will go here */}
-                        <form onSubmit={handleSubmit}>
-                            <CardElement onChange={handleChange}/> 
+                        <form >
+                            <CardElement /> 
+
+                            <div className="payment-totalContainer">
+                                <CurrencyFormat renderText={(finalTotal) => (
+                                    <>
+                                        <h3>Order total: {finalTotal}</h3>
+                                    </>
+                                )}
+                                />
+                            </div>
                         </form>
                     </div>
                 </div>
