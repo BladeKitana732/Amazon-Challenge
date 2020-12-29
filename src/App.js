@@ -60,7 +60,7 @@ function App() {
           <Route path="/payment">
             <Header />
             <Elements stripe={promise}>
-            <Payment />
+              <Payment />
             </Elements>
             
           </Route> 

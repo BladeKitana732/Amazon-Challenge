@@ -1,15 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Payment.css';
 import { useStateValue } from "../StateProvider";
 import ChosenItem from './ChosenItem';
 import { Link } from 'react-router-dom';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import CurrencyFormat from 'react-currency-format';
-import cartTotal from '../reducer';
+import { cartTotal } from "../reducer";
 
 
 function Payment() {
-    const [{ user, cart }] = useStateValue();
+    const [{ user, cart }, release ] = useStateValue();
+
+    const stripe = useStripe();
+    const elements = useElements();
+
+    const [error, setError] = useState(null);
+    const [disabled, setDisabled] = useState(null);
+
+    // takes an event and executes code for stripe functionality
+    const handleInfo = e => {
+
+    }
+
+    // reads changes done with card details and if error occurs to notify the user
+    const handlesChange = e => {
+        setDisabled(e.empty);
+        setError(e.error ? e.error.message : "");
+    }
 
     return (
         <div className="payment-background">
@@ -33,7 +50,7 @@ function Payment() {
             {/* Item review */}
                 <div className="payment-area">
                     <div className="title">
-                        <h2>Review Chosen Items</h2>
+                        <h3>Review Chosen Items</h3>
                     </div>
                     <div className="chosen-items">
                         {cart.map(item => (
@@ -55,15 +72,20 @@ function Payment() {
                     </div>
                     <div className="card-details">
                         {/* Stripe magic will go here */}
-                        <form >
-                            <CardElement /> 
+                        <form onSubmit={handleInfo}>
+                            <CardElement onChange={handlesChange}/> 
 
-                            <div className="payment-totalContainer">
+                            <div className=" payment-totalContainer">
                                 <CurrencyFormat renderText={(finalTotal) => (
                                     <>
                                         <h3>Order total: {finalTotal}</h3>
                                     </>
                                 )}
+                                decimalScale={2}
+                                value={cartTotal(cart)}
+                                displayType={"text"}
+                                thousandSeparator={true}
+                                prefix={"$"}
                                 />
                             </div>
                         </form>
